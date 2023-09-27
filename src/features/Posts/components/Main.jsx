@@ -1,17 +1,12 @@
 import { useState, useLayoutEffect, useRef, useMemo } from 'react';
 import './Main.css'
 import Post from './Post';
-
+import { DESCRIPTION_LENGTH, ITEM_HIGH, CONTAINER_HIGH } from '../constants/constants'
 const Main = ({ data }) => {
-
-  const ITEM_HIGH = 100;
-  const CONTAINER_HIGH = 800;
-  const OVERSCAN = 3;
 
   const [scrollTop, setScrollTop] = useState(0);
 
   const scrollElementRef = useRef(null)
-
 
   useLayoutEffect(() => {
     const scrollElement = scrollElementRef.current
@@ -51,27 +46,34 @@ const Main = ({ data }) => {
   }, [scrollTop, data.length]);
 
   return (
-    <div
-      ref={scrollElementRef}
-      style={{
-        height: CONTAINER_HIGH,
-        overflow: 'auto',
-        outline: '1px red solid',
-      }}
-    >
-      <div
-        key={data.length}
-        style={{
-          height: data.length * ITEM_HIGH,
-          position: 'relative',
-        }}
-      >
-        {virtualItems.map((virtualItem) => {
-          const item = data[virtualItem.index]
-          return <Post key={item.id} item={item} virtualItem={virtualItem} itemHigh={ITEM_HIGH} />
-        })}
-      </div>
-    </div >
+    <section>
+      <main className='main'>
+        <span>{`Обрезаем на ${DESCRIPTION_LENGTH} символах`}</span>
+        <span></span>
+        <span></span>
+        <div
+          ref={scrollElementRef}
+          style={{
+            height: CONTAINER_HIGH,
+            overflow: 'auto',
+            outline: '1px red solid',
+          }}
+        >
+          <div
+            key={data.length}
+            style={{
+              height: data.length * ITEM_HIGH,
+              position: 'relative',
+            }}
+          >
+            {virtualItems.map((virtualItem) => {
+              const item = data[virtualItem.index]
+              return <Post key={item.id} item={item} virtualItem={virtualItem} itemHigh={ITEM_HIGH} />
+            })}
+          </div>
+        </div >
+      </main>
+    </section>
   );
 };
 

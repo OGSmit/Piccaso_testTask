@@ -1,15 +1,14 @@
-import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { DESCRIPTION_LENGTH } from '../constants/constants'
 
 const Post = ({ item, virtualItem, itemHigh }) => {
-  // const textRef = useRef(null)
-  // console.log(textRef.current)
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate(`/${item.id}`, {replace: true})
+    navigate(`/${item.id}`, { replace: true })
   }
 
   return (<div
+    className='scroll-container'
     key={item.id}
     style={{
       height: itemHigh,
@@ -19,8 +18,8 @@ const Post = ({ item, virtualItem, itemHigh }) => {
       width: '100%',
     }}
   >
-    <p className='scroll-itemText'>{`${item.id}. ${item.title} ${item.body}`}</p>
-    <button onClick={handleClick} className='scroll-itemButton' type='button'>Просмотр</button>
+    <p className='scroll-itemText'>{`Номер=${item.id} Заголовок=${item.title} Описание обрезанное${item.body.length > DESCRIPTION_LENGTH ? item.body.slice(0, DESCRIPTION_LENGTH - 3) + '...' : item.body}`}</p>
+    {item.body.length > DESCRIPTION_LENGTH && <button onClick={handleClick} className='scroll-itemButton' type='button'>Просмотр</button>}
   </div >
   )
 }
