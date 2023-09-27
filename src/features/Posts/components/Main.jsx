@@ -1,5 +1,6 @@
 import { useState, useLayoutEffect, useRef, useMemo } from 'react';
 import './Main.css'
+import Post from './Post';
 
 const Main = ({ data }) => {
 
@@ -67,19 +68,7 @@ const Main = ({ data }) => {
       >
         {virtualItems.map((virtualItem) => {
           const item = data[virtualItem.index]
-
-          return (<div
-            key={item.id}
-            style={{
-              height: ITEM_HIGH,
-              position: 'absolute',
-              top: 0,
-              transform: `translateY(${virtualItem.offsetTop}px)`
-            }}
-          >
-            {`${item.id}. ${item.title} ${item.body}`}
-          </div >
-          )
+          return <Post key={item.id} item={item} virtualItem={virtualItem} itemHigh={ITEM_HIGH} />
         })}
       </div>
     </div >

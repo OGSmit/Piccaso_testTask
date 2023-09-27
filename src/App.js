@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import Main from './features/Posts/components/Main';
-import Post from './features/Posts/components/Post';
 import './App.css';
 
 function App() {
+
   async function fetchPosts() {
     try {
       const res = await fetch('https://jsonplaceholder.typicode.com/posts')
@@ -36,8 +37,14 @@ function App() {
       <Routes>
         <Route path='/' element={<Main data={data} />} />
         {(data.length > 0) && data.map((item) => {
-          return <Route key={item.id} path={`/${item.id}`} element={<Post item={item} />} />
+          return <Route key={item.id} path={`/${item.id}`} element={(
+            <>
+              <span>{`${item.id}${item.title}${item.body}`}</span>
+              <Link to='/' >Назад</Link>
+            </>
+          )} />
         })}
+        <Route path='/*' element={<span>Упс такой страницы нет</span>} />
       </Routes>
     </>
   );
