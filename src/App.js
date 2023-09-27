@@ -40,7 +40,7 @@ function App() {
                   height: 'max-content',
                   width: 'max-content',
                   textDecoration: 'none'
-                }} to='/' >Назад</Link>
+                }} to='/#' >Назад</Link>
               </div>
             </section>
           )} />
