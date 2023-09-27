@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/piccaso_test-task/static/css/main.69d3b4a2.css",
+    "main.js": "/piccaso_test-task/static/js/main.07a3a445.js",
+    "index.html": "/piccaso_test-task/index.html",
+    "main.69d3b4a2.css.map": "/piccaso_test-task/static/css/main.69d3b4a2.css.map",
+    "main.07a3a445.js.map": "/piccaso_test-task/static/js/main.07a3a445.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69d3b4a2.css",
+    "static/js/main.07a3a445.js"
+  ]
+}
