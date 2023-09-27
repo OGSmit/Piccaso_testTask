@@ -1,6 +1,6 @@
 {
-  "name": "https://ogsmit.github.io/piccaso_test-task/",
-  "homepage": "",
+  "name": "piccaso_test-task",
+  "homepage": "https://ogsmit.github.io/piccaso_test-task",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
