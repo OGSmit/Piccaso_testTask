@@ -1,11 +1,11 @@
 
-const Post = ({item}) => {
-  return (<div>
+const Post = ({ item }) => {
+  return (
     <li key={item.id}>
       <h2>{`. ${item.title}`}</h2>
       <p>{item.body}</p>
     </li>
-  </div>)
+  )
 }
 
 export default Post;
